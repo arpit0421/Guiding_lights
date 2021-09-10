@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.navbar{
+    justify-content: start;
+    background-color: #fffb00;
+    
+}
+.navbar ul li{
+    font-size: 1.5rem;
+}
+html{
+    font-family: 'Courier New', Courier, monospace;
+}
+.container{
+    justify-content:center;
+    display: flex;
+    max-width: 100%;
+    
+}
+.container form h1{
+    font-size: 2rem;
+}
+.container form input{
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 3px solid black;
+    width: 25rem;
+}
+.container form button{
+    width: 7rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+.selector{
+    padding: 1rem 2rem;
+    border: 2px solid black;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: #fff;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+.selected{
+    background-color: #fffb00;
+}
+.isinvalid{
+    color: #000;
+}
+.selector:hover{
+    background-color: #ff0000;
+}
