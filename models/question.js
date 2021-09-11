@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 // import user from './user'
 
 const questionSchema = new mongoose.Schema({
-    text:{
+    quest:{
         type: String,
         required: true
     },
@@ -12,19 +12,18 @@ const questionSchema = new mongoose.Schema({
         ref: 'user',
         required: true
     },
-    _answers:[
+    answer:[
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'answer'
+            answer: String
         }
     ],
-    date:{
-        type: Date,
-        default: Date.now
-    }, 
     likes:{
         type: Number,
         default: 0
+    },
+    date:{
+        type: Date,
+        default: Date.now
     }
 })
 

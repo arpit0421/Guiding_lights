@@ -9,27 +9,33 @@ dbConnect()
 export default async(req, res)=>{
 
     const {email, password} = req.body
-    if(!email || !password){
-        res.status(422).json({error:"Input all fields"})
-        return
+    try{
+        if(!email || !password){
+            res.status(422).json({error:"Input all fields"})
+            return
+        }
+    
+        const User = await user.findOne({email: email})
+        if(!User){
+            res.status(422).json({error:"User not found"})
+            return
+        }
+    
+        const matchPassword = await bcrypt.compare(User.password, password)
+        if(matchPassword){
+            const token = jwt.sign({userId: User._id}, process.env.JWT_SECRET, {
+                expiresIn:"2d"
+            })
+            res.status(201).json({token}) 
+        }
+        else{
+            res.status(422).json({error:"email or password don't match"})
+            return
+        }
     }
-
-    const User = await user.findOne({email: email})
-    if(!User){
-        res.status(422).json({error:"User not found"})
-        return
+    catch(err){
+        console.log(err)
     }
-
-    const matchPassword = await bcrypt.compare(User.password, password)
-    if(matchPassword){
-        const token = jwt.sign({userId: User._id}, process.env.JWT_SECRET, {
-            expiresIn:"2d"
-        })
-        res.status(201).json({token})
-    }
-    else{
-        res.status(422).json({error:"email or password don't match"})
-        return
-    }
+    
 
 } 

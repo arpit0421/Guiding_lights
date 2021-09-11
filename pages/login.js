@@ -1,9 +1,12 @@
-import { getCookieParser } from 'next/dist/server/api-utils'
+
 import Link from 'next/link'
 import {useState} from 'react'
 import cookie from 'js-cookie'
+import {useRouter} from 'next/router'
 
 const Login = ()=>{
+
+    const router = useRouter()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -29,14 +32,15 @@ const Login = ()=>{
         }
         else{
             console.log(res2)
-            cookie.set('token', res.token)
-               
+            cookie.set('token', res2.token)
+            router.push('/discussion')
         }
     }
     
     return(
         <div className="">
                 <div className="container w-full">
+                    <div><h1>Not Registered ?<Link href="/signup"><a>SignUp</a></Link></h1></div>
                     <form className="flex-col flex mt-40" onSubmit={(e)=>userLogin(e)}>
                         <h1>Login</h1>
                         <input type="email" value={email} name="email" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}}></input>
