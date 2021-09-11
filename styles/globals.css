@@ -18,13 +18,19 @@ html{
     max-width: 100%;
     
 }
+.guidingHeading{
+    font-size: 1.875rem;
+}
+.navbarItems{
+    font-size: 1.25rem;
+}
 .container form h1{
     font-size: 2rem;
 }
 .container form input{
     font-size: 1.5rem;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
     border: 3px solid black;
     width: 25rem;
 }

@@ -7,8 +7,8 @@ const askForm = ()=>{
     }
 
     return(
-        <div class="container-fluid ask-div" className=" ">
-            <form class="" action="/ask" method="post" onSubmit={(e)=>askQuest(e)}>
+        <div className="container-fluid ask-div">
+            <form className="" action="/ask" method="post" onSubmit={(e)=>askQuest(e)}>
             <div className="form-group mb-0.5;">
                 <label for="exampleFormControlTextarea1" className="ask">Ask your doubts here!</label>
                 <textarea placeholder="Type your Question here" className="form-control h-100px;" name="quest" id="exampleFormControlTextarea1" rows="5"></textarea>

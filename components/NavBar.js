@@ -27,26 +27,29 @@ const NavBar = ()=>{
     }
 
     return(
-        <div className="navbar flex flex-row fixed w-full pl-2">
-                <Link href="/"><a className="py-5 font-bold">Guiding Light</a></Link>
+        <div className="navbar flex flex-row fixed w-full pl-2 py-3">
+                <Link href="/"><a className="font-bold guidingHeading">Guiding Light</a></Link>
+                <Link href="/discussion"><a className="ml-6 mt-2 navbarItems ">Discussion</a></Link>
+                <Link href="/ask"><a className="ml-6 mt-2 navbarItems ">Ask a question</a></Link>
+
                 <ul className="flex-row flex absolute right-20">
                     
                     { userLoggenIn ? 
                         <>
-                            <li className="mx-4 pt-2.5">
+                            <li className="mx-4">
                                 <Link href="profile/[profileid]" as={`profile/${User._id}`}><a>profile</a></Link> {/* /profile/:profileid*/}
                             </li>
-                            <li className="mx-4 pt-2.5">
-                                <button className="bg-red-400 p-3 border-2" onClick={(e)=>userLogout(e)}>Logout</button>
+                            <li className="mx-4">
+                                <button onClick={(e)=>userLogout(e)}>logout</button>
                             </li>
-                        </>
+                        </> 
                         
                         :
                         <>
-                            <li className="mx-4 pt-2.5">
+                            <li className="mx-4 mt-1">
                                 <Link  href="/login"><a>Login</a></Link>
                             </li>
-                            <li className="mx-4 pt-2.5">
+                            <li className="mx-4 mt-1">
                                 <Link href="/signup"><a>Signup</a></Link>
                             </li>
                         </>
