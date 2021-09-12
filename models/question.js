@@ -25,6 +25,7 @@ const questionSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+}, {timestamps:true
 })
 
 export default mongoose.models.question || mongoose.model('question', questionSchema)

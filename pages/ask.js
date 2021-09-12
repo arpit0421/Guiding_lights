@@ -1,9 +1,24 @@
 // form to post questions
+
+import { parseCookies } from "nookies"
+
+
 const askForm = ()=>{
 
 
     const askQuest = async(e)=>{
-        
+        e.preventDefault()
+        const res = await fetch('http://localhost:3000/login',{
+            method:"POST",
+            headers:{
+                "Content-Type":"aplication/json"
+            },
+            body: JSON.stringify({
+                quest,
+                
+            })
+        })
+
     }
 
     return(
@@ -21,3 +36,22 @@ const askForm = ()=>{
 }
 
 export default askForm
+
+export async function getServerSideProps(ctx){
+    const cookieUser = parseCookies(ctx)
+    const User = cookieUser.user ? JSON.parse(cookieUser.user) : ""
+    // const router = useRouter()
+    // console.log(User)
+    if(!cookieUser.token){
+        // router.push("/login")
+        const {res} = ctx
+        res.writeHead(302, {location:"/login"})
+        res.end()
+    }
+
+
+
+    return{
+        props:{}
+    }
+}

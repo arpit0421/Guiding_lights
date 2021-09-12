@@ -3,6 +3,8 @@
 import { useRouter } from 'next/router'
 import { parseCookies } from 'nookies'
 import Link from 'next/link'
+import cookie from 'cookie'
+
 const discussion = ()=>{
 
     return(
@@ -16,7 +18,7 @@ export async function getServerSideProps(ctx){
     const cookieUser = parseCookies(ctx)
     const User = cookieUser.user ? JSON.parse(cookieUser.user) : ""
     // const router = useRouter()
-    console.log(User)
+    // console.log(User)
     if(!cookieUser.token){
         // router.push("/login")
         const {res} = ctx

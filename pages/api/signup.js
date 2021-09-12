@@ -15,7 +15,7 @@ export default async(req, res)=>{
             return res.status(422).json({error:"Please provide all details"})
         }
         
-        const User = user.findOne({email: req.body.email})
+        const User = await user.findOne({email: req.body.email})
         if(User){
             return res.status(422).json({error:"Email already registered"})
         }

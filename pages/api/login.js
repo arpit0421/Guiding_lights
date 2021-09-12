@@ -8,24 +8,26 @@ dbConnect()
 
 export default async(req, res)=>{
 
-    const {email, password} = req.body
+    // const {email, password} = req.body
     try{
-        if(!email || !password){
+        if(!req.body.email || !req.body.password){
             res.status(422).json({error:"Input all fields"})
             return
         }
     
-        const User = await user.findOne({email: email})
+        const User = await user.findOne({email: req.body.email})
         if(!User){
             res.status(422).json({error:"User not found"})
             return
         }
-    
-        const matchPassword = await bcrypt.compare(User.password, password)
+        console.log(User)
+        const matchPassword = await bcrypt.compare(User.password, req.body.password)
+        
         if(matchPassword){
             const token = jwt.sign({userId: User._id}, process.env.JWT_SECRET, {
                 expiresIn:"2d"
             })
+            
             res.status(201).json({token}) 
         }
         else{

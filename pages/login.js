@@ -26,13 +26,14 @@ const Login = ()=>{
             })
         })
 
-        const res2 = res.json()
+        const res2 = await res.json()
         if(res2.error){
             return res.status(422).json({error:"error occured while login"})
         }
         else{
-            console.log(res2)
+            console.log(res2.token)
             cookie.set('token', res2.token)
+            // cookie.set('user',res2.user)
             router.push('/discussion')
         }
     }
