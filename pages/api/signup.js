@@ -15,10 +15,14 @@ export default async(req, res)=>{
             return res.status(422).json({error:"Please provide all details"})
         }
         
-        const User = await user.findOne({email: req.body.email})
-        if(User){
-            return res.status(422).json({error:"Email already registered"})
-        }
+        {/*const User = user.findOne({email: req.body.email},(error,user)=>{
+            if(User){
+                console.log(User);
+                return res.status(422).json({error:"Email already registered"})
+                
+            }
+        })*/}
+
 
         // const salt = await bcrypt.genSalt()
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -28,7 +32,8 @@ export default async(req, res)=>{
             department: req.body.department,
             email: req.body.email,
             password: hashedPassword,
-            role: req.body.role
+            studentSelector:req.body.studentSelector,
+            guidingSelector:req.body.guidingSelector
         }).save()
 
         console.log(newUser)

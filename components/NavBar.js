@@ -29,8 +29,8 @@ const NavBar = ()=>{
     return(
         <div className="navbar flex flex-row fixed w-full pl-2 py-3">
                 <Link href="/"><a className="font-bold guidingHeading">Guiding Light</a></Link>
-                <Link href="/discussion"><a className="ml-6 mt-2 navbarItems ">Discussion</a></Link>
-                <Link href="/ask"><a className="ml-6 mt-2 navbarItems ">Ask a question</a></Link>
+                <Link href="/discussion"><a className="ml-6 mt-2 text-gray-600 hover:text-black navbarItems ">Discussion</a></Link>
+                <Link href="/ask"><a className="ml-6 mt-2 text-gray-600 hover:text-black navbarItems ">Ask a question</a></Link>
 
                 <ul className="flex-row flex absolute right-20">
                     

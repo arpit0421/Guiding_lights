@@ -17,11 +17,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    role:{
-        type: String,
+    studentSelector:{
+        type: Boolean,
         required: true,
-        default: "student",
-        enum: ['student', 'guiding', 'root']
+    },
+    guidingSelector:{
+        type: Boolean,
+        required: true,
     }
 
 }, 
