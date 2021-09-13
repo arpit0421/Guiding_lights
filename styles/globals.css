@@ -57,3 +57,11 @@ html{
 .selector:hover{
     background-color: #ff0000;
 }
+.form-control{
+    border: 2px solid black;
+    width: 30rem;
+}
+.ask-div{
+    margin-top: 17rem;
+
+}
