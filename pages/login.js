@@ -15,7 +15,7 @@ const Login = ()=>{
 
         e.preventDefault()
 
-        const res = await fetch('http://localhost:3000/login', {
+        const res = await fetch('http://localhost:3000/api/login', {
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -28,7 +28,9 @@ const Login = ()=>{
 
         const res2 = await res.json()
         if(res2.error){
-            return res.status(422).json({error:"error occured while login"})
+            // res2.status(422).json({error:"error occured while login"})
+            // return
+            console.log(res2.error)
         }
         else{
             console.log(res2.token)

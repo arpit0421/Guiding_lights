@@ -15,19 +15,37 @@ export default async(req, res)=>{
             return
         }
     
-        const User = await user.findOne({email: req.body.email})
-        if(!User){
-            res.status(422).json({error:"User not found"})
+        const currUser = await user.findOne({email: req.body.email})
+        // console.log(currUser)
+        if(!currUser){
+            res.status(422).json({error:"currUser not found"})
             return
         }
-        console.log(User)
-        const matchPassword = await bcrypt.compare(User.password, req.body.password)
+
+        const matchPassword = await bcrypt.compare( req.body.password, currUser.password)
+        
+        // const matchPassword = await bcrypt.compare(currUser.password, req.body.password, (err, matched)=>{
+        //     if(err){
+        //         console.log(err)
+        //         return
+        //     }
+        //     if(matched){
+        //         const token = jwt.sign({userId: currUser._id}, process.env.JWT_SECRET, {expiresIn:"2d"})
+        //         console.log(currUser)
+        //         res.status(201).json({token})
+        //         console.log(token)
+        //         return
+        //     }else{
+        //         return res.status(422).json({error: "email or password don't match"})
+        //     }
+        // })
         
         if(matchPassword){
-            const token = jwt.sign({userId: User._id}, process.env.JWT_SECRET, {
+            const token = jwt.sign({userId: currUser._id}, process.env.JWT_SECRET, {
                 expiresIn:"2d"
             })
             
+            console.log(currUser)
             res.status(201).json({token}) 
         }
         else{
