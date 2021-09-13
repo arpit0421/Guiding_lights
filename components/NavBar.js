@@ -22,7 +22,7 @@ const NavBar = ()=>{
 
     const userLogout = (e)=>{
         cookie.remove('token')
-        cookie.remove('user')
+        cookie.remove('User')
         router.push('/login')
     }
 

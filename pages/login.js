@@ -33,9 +33,9 @@ const Login = ()=>{
             console.log(res2.error)
         }
         else{
-            console.log(res2.token)
+            // console.log(res2.token)
             cookie.set('token', res2.token)
-            // cookie.set('user',res2.user)
+            // cookie.set('User',res2.currUser)
             router.push('/discussion')
         }
     }

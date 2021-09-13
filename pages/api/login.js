@@ -41,11 +41,13 @@ export default async(req, res)=>{
         // })
         
         if(matchPassword){
-            const token = jwt.sign({userId: currUser._id}, process.env.JWT_SECRET, {
+            const token = jwt.sign({userId: currUser._id, name: currUser.name, email: currUser.email, dept: currUser.department}, process.env.JWT_SECRET, {
                 expiresIn:"2d"
             })
             
             console.log(currUser)
+            const {name, _id, email, role} = currUser
+
             res.status(201).json({token}) 
         }
         else{

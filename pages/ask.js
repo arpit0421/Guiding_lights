@@ -39,7 +39,10 @@ export default askForm
 
 export async function getServerSideProps(ctx){
     const cookieUser = parseCookies(ctx)
-    const User = cookieUser.user ? JSON.parse(cookieUser.user) : ""
+    // const User = cookieUser.user ? JSON.parse(cookieUser.user) : ""
+
+    console.log(cookieUser);
+
     // const router = useRouter()
     // console.log(User)
     if(!cookieUser.token){
