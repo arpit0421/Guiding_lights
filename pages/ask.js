@@ -9,7 +9,8 @@ import {useState} from 'react'
 const askForm = (props)=>{
 
     const[quest, setQuest] = useState("")
-    const[postedBy, setPostedBy] = useState(props.userInfo.userId)
+    
+    const postedBy = props.userInfo.userNow.userId
     const[likes, setLikes] = useState(0)
     // const[]
     const router = useRouter()
@@ -19,14 +20,18 @@ const askForm = (props)=>{
     const askQuest = async(e)=>{
         e.preventDefault()
 
+        console.log(postedBy)
+        console.log(quest)
+
         const res = await fetch('http://localhost:3000/api/ask',{
+            method: "POST",
             headers:{
                 "Content-Type":"aplication/json"
             },
             body: JSON.stringify({
-                quest:quest,
-                postedBy:postedBy,
-                likes:0
+                quest,
+                postedBy,
+                likes
             })
         })
 
@@ -37,6 +42,7 @@ const askForm = (props)=>{
             console.log("question posted")
             router.push('/discussion')
         }
+
 
     }
  

@@ -15,13 +15,13 @@ export default async(req,res)=>{
         const Question = await new question({
             quest: data.quest,
             postedBy: data.postedBy,
-            likes: data.likes,
+            likes: data.likes
             
         }).save()
 
-        // console.log(Question)
+        console.log(Question)
         console.log(JSON.parse(req.body))
-        
+        console.log(data)
         res.status(201).json({message:"question saved"})
 
     } catch (error) {
