@@ -5,25 +5,21 @@ import mongoose from 'mongoose'
 const questionSchema = new mongoose.Schema({
     quest:{
         type: String,
-        required: true
+        required: [true, 'quest is required']
     },
     postedBy:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
-        required: true
+        type: String,
+        // required: [true, 'posted by is required']
     },
     answer:[
         {
-            answer: String
+            answer: String,
+            name: String 
         }
     ],
     likes:{
         type: Number,
         default: 0
-    },
-    date:{
-        type: Date,
-        default: Date.now
     }
 }, {timestamps:true
 })
