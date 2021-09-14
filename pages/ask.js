@@ -9,7 +9,7 @@ import {useState} from 'react'
 const askForm = (props)=>{
 
     const[quest, setQuest] = useState("")
-    const[postedBy, setPostedBy] = useState(props.userInfo.userNow.userId)
+    const[postedBy, setPostedBy] = useState(props.userInfo.userId)
     const[likes, setLikes] = useState(0)
     // const[]
     const router = useRouter()
@@ -19,11 +19,7 @@ const askForm = (props)=>{
     const askQuest = async(e)=>{
         e.preventDefault()
 
-        console.log(postedBy)
-        console.log(quest)
-
         const res = await fetch('http://localhost:3000/api/ask',{
-            method: "POST",
             headers:{
                 "Content-Type":"aplication/json"
             },
@@ -43,7 +39,7 @@ const askForm = (props)=>{
         }
 
     }
-
+ 
     return(
         <div className="container-fluid ask-div flex justify-center">
             <form className="" action="/ask" method="post" onSubmit={(e)=>askQuest(e)}>
@@ -53,6 +49,9 @@ const askForm = (props)=>{
                 </div>
                 <button type="submit" className="bg-blue-200">Ask</button>
 
+            </form>
+            <form>
+                <button></button>
             </form>
         </div>
     )
