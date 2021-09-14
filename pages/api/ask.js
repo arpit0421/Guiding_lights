@@ -11,16 +11,16 @@ export default async(req,res)=>{
     try {
 
         // console.log(typeof(req.body.quest))
-
+        const data = JSON.parse(req.body)
         const Question = await new question({
-            quest: req.body.quest,
-            postedBy: req.body.postedBy,
-            likes: req.body.likes,
+            quest: data.quest,
+            postedBy: data.postedBy,
+            likes: data.likes,
             
         }).save()
 
-        console.log(Question)
-        console.log(req.body.quest)
+        // console.log(Question)
+        console.log(JSON.parse(req.body))
         
         res.status(201).json({message:"question saved"})
 
