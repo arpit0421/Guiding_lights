@@ -31,6 +31,9 @@ const askForm = ()=>{
                 <button type="submit" className="bg-blue-200">Ask</button>
 
             </form>
+            <form>
+                <button></button>
+            </form>
         </div>
     )
 }
