@@ -15,7 +15,7 @@ export default async(req,res)=>{
         const Question = await new question({
             quest: req.body.quest,
             postedBy: req.body.postedBy,
-            likes: req.body.likes,
+            likes: req.body.likes
             
         }).save()
 

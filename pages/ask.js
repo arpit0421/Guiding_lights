@@ -19,7 +19,7 @@ const askForm = (props)=>{
     const askQuest = async(e)=>{
         e.preventDefault()
 
-        console.log(props.userInfo.userNow.userId)
+        console.log(postedBy)
         console.log(quest)
 
         const res = await fetch('http://localhost:3000/api/ask',{
@@ -28,9 +28,9 @@ const askForm = (props)=>{
                 "Content-Type":"aplication/json"
             },
             body: JSON.stringify({
-                quest,
-                postedBy,
-                likes
+                quest:quest,
+                postedBy:postedBy,
+                likes:0
             })
         })
 

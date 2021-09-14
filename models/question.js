@@ -9,7 +9,7 @@ const questionSchema = new mongoose.Schema({
     },
     postedBy:{
         type: String,
-        // required: [true, 'posted by is required']
+        required: [true, 'posted by is required']
     },
     answer:[
         {
