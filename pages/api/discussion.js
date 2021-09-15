@@ -1,5 +1,4 @@
 import dbConnect from "../../helpers/dbconnect"
-import mongoose from 'mongoose'
 import question from '../../models/question'
 
 dbConnect()
