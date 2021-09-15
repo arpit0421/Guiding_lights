@@ -9,7 +9,6 @@ import {useState} from 'react'
 const askForm = (props)=>{
 
     const[quest, setQuest] = useState("")
-    
     const postedBy = props.userInfo.userNow.userId
     const[likes, setLikes] = useState(0)
     // const[]
@@ -19,9 +18,9 @@ const askForm = (props)=>{
     
     const askQuest = async(e)=>{
         e.preventDefault()
-
-        console.log(postedBy)
-        console.log(quest)
+        console.log(postedBy);
+        // console.log(props.userInfo.userId)
+        // console.log(quest)
 
         const res = await fetch('http://localhost:3000/api/ask',{
             method: "POST",
@@ -72,17 +71,12 @@ export async function getServerSideProps(ctx){
     const userInfo = decoded
     // console.log(userInfo.userNow.name)
     // console.log(userInfo.userNow.userId)
-
-
     if(!cookieUser.token){
         // router.push("/login")
         const {res} = ctx
         res.writeHead(302, {location:"/login"})
         res.end()
     }
-
-
-
     return{
         props:{userInfo}
     }
