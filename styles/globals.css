@@ -4,10 +4,18 @@
 .navbar{
     justify-content: start;
     background-color: #fffb00;
+    width: 100%;
+    z-index: 20;
     
 }
 .navbar ul li{
     font-size: 1.5rem;
+}
+.loginsignup{
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
 }
 html{
     font-family: 'Courier New', Courier, monospace;
@@ -64,4 +72,58 @@ html{
 .ask-div{
     margin-top: 17rem;
 
+}
+.discussions{
+    font-size: 4rem;
+    position:absolute;
+    top: 6rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    margin-left: -4rem;
+}
+.discussioncard{
+    height: 16rem;
+    background-color: #CAF7E3;
+    margin: 2rem;
+    width: 70rem;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+.discussioncard h1{
+    z-index: 10;
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-left: 8rem;
+
+}
+.discussioncard p{
+    font-size: 1.49rem;
+    margin-left: 8rem;
+    max-width: 60rem;
+    margin-top: 1rem;
+    position: absolute;
+    overflow-wrap: break-word;
+    font-weight: 500;
+}
+.discussioncard div{
+    margin-top: 8rem;
+}
+.discussioncard div .likes{
+    margin-left: 2rem;
+}
+.discussioncard div .anslength{
+    margin-left: 15rem;
+}
+.discussioncard img{
+    z-index: 10;
+    height: 7rem;
+    border-radius: 100%;
+    position: absolute;
+}
+.likes img{
+    height: 1rem;
+    display: inline;
+    position: relative;
+    left: -4px;
+    top: -1px;
 }

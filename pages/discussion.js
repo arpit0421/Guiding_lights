@@ -4,25 +4,27 @@ import { useRouter } from 'next/router'
 import { parseCookies } from 'nookies'
 import Link from 'next/link'
 import cookie from 'cookie'
+import DiscussionsCard from '../components/DiscussionsCard'
 // import question from '../models/question'
 
 const discussion = ({questions})=>{
 
     return(
         <>
-        <div><h1>This is a Discussion a page</h1></div>
-        {questions.map((question)=>{
-            return(
-                <div key={question._id}>
-                    <p>{question.quest}</p>
-                    <p>{question.postedBy}</p>
-                </div>
-                
+        <h1 className="discussions">Discussions</h1>
+        <div className="flex flex-col justify-center mt-[12rem]">
+            {questions.map((question)=>{
+                return(
+                    <DiscussionsCard key={question._id} quest={question.quest}
+                    postedBy={question.postedBy} ans={question.answer} likes = {question.likes}
+                    />
+                    
+                    
+                    )
+                })}
+        </div>
 
-            )
-        })}
-
-        </>
+        </> 
     )
 }
 
