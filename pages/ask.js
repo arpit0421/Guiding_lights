@@ -4,14 +4,14 @@ import { parseCookies } from "nookies"
 import {useRouter} from 'next/router'
 import {useState} from 'react'
 
-// import question from '../models/question'
 
 const askForm = (props)=>{
 
     const[quest, setQuest] = useState("")
     const postedBy = props.userInfo.userNow.userId
+    const postedByName = props.userInfo.userNow.name
     const[likes, setLikes] = useState(0)
-    // const[]
+    
     const router = useRouter()
 
     // console.log(typeof(props.userInfo.userNow.userId))
@@ -30,6 +30,7 @@ const askForm = (props)=>{
             body: JSON.stringify({
                 quest,
                 postedBy,
+                postedByName,
                 likes
             })
         })
@@ -55,9 +56,9 @@ const askForm = (props)=>{
                 <button type="submit" className="bg-blue-200">Ask</button>
 
             </form>
-            <form>
+            {/* <form>
                 <button></button>
-            </form>
+            </form> */}
         </div>
     )
 }
@@ -71,6 +72,7 @@ export async function getServerSideProps(ctx){
     const userInfo = decoded
     // console.log(userInfo.userNow.name)
     // console.log(userInfo.userNow.userId)
+    console.log(userInfo)
     if(!cookieUser.token){
         // router.push("/login")
         const {res} = ctx
