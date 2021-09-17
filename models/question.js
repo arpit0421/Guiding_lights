@@ -7,9 +7,13 @@ const questionSchema = new mongoose.Schema({
         type: String,
         required: [true, 'quest is required']
     },
-    postedBy:{
+    postedById:{
         type: String,
         required: [true, 'posted by is required']
+    },
+    postedByName:{
+        type: String,
+        required: [true, 'postedByName is required']
     },
     answer:[
         {

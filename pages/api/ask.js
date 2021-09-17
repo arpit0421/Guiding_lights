@@ -6,15 +6,17 @@ import question from '../../models/question'
 
 dbConnect()
 
-export default async(req,res)=>{
+export default async(req, res)=>{
 
     try {
 
         // console.log(typeof(req.body.quest))
         const data = JSON.parse(req.body)
+        console.log(data.postedById);
         const Question = await new question({
             quest: data.quest,
-            postedBy: data.postedBy,
+            postedById: data.postedById,
+            postedByName: data.postedByName,
             likes: data.likes
             
         }).save()

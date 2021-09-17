@@ -1,6 +1,6 @@
 import NavBar from './NavBar'
 import Head from 'next/head'
-
+import Footer from './Footer'
 //make a footer component and add it to the Layout
 
 const Layout = ({children})=>{
@@ -14,7 +14,7 @@ const Layout = ({children})=>{
             <div className="container mt-20">
                 {children}
             </div>
-            
+            <Footer/>
         </>   
     )
 }
