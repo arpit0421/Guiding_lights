@@ -3,7 +3,7 @@ import question from '../../models/question'
 
 dbConnect()
 
-export default async(req,res)=>{
+export default async(req, res)=>{
 
     try {
         const data = await question.find()
