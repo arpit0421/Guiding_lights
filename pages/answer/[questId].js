@@ -1,37 +1,38 @@
 import { useRouter } from "next/router"
-import question from "../../models/question"
-import { Mongoose } from "mongoose"
 
-const answer = (props)=>{
-    
-    console.log(props)
-    // console.log(questId)
-    return(
-        <h1>This is the answers page for paricular answer </h1>
+
+const answer = ()=>{
+    const router = useRouter()
+    const {questid} = router.query 
+    return (
+        <><h1>This is a answers page for particular answer {questid}</h1> </>
     )
-    
 }
 
 export default answer
 
-export async function getStaticProps({params}){
-
-    const res = await fetch(`http://localhost:3000/api/answer/${params.id}`,{
+export async function getStaticProps({params})
+{
+    const res = await fetch(`http://localhost:3000/api/answer/${params.questid}`, {
         method:"GET",
         headers:{
             "Content-Type":"application/json"
         }
     })
+
     const data = await res.json()
+    console.log(data)
 
     return{
-        props:{answer: data}
+        props:{
+            answer:data
+        }
     }
+
 }
 
-
-export async function getStaticPaths(){
-    
+export async function getStaticPaths()
+{
     const res = await fetch('http://localhost:3000/api/discussion',{
         method:"GET",
         headers:{
@@ -39,18 +40,16 @@ export async function getStaticPaths(){
         }
     })
     const data = await res.json()
-    // console.log(data[0]);
     const paths = data.map(ques=>{
         return{
-            params : {id : ques._id}
+            params:{questid: ques._id.toString()}
         }
     })
 
-    console.log(paths)
+    // console.log(paths)
 
     return{
         paths,
-        fallback: true
+        fallback: false
     }
-
 }
