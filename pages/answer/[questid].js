@@ -50,7 +50,7 @@ export async function getStaticPaths()
         }
     })
 
-    // console.log(paths)
+    // console.log(paths) trial
 
     return{
         paths,
