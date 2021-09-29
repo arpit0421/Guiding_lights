@@ -14,9 +14,10 @@ const discussion = ({questions})=>{
         <h1 className="discussions">Discussions</h1>
         <div className="flex flex-col justify-center mt-[12rem]">
             {questions.map((question)=>{
+                
                 return(
                     <DiscussionsCard key={question._id} quest={question.quest} postedByName = {question.postedByName}
-                    ans={question.answer} likes = {question.likes}
+                    ans={question.answer} likes = {question.likes} _id={question._id}
                     />
                     
                     

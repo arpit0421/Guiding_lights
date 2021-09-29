@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Link from "next/link"
 import dbconnect from "../helpers/dbconnect"
 export class DiscussionsCard extends Component {
     render(props) {
@@ -12,7 +13,7 @@ export class DiscussionsCard extends Component {
                     Likes <img src="like.png"></img>: {this.props.likes}   
                 </span>
                 <span className="anslength">
-                    Ans : {this.props.ans.length}
+                    <Link href={`/answer/${this.props._id}`}><a>Ans</a></Link> : {this.props.ans.length}
                 </span>
                 </div>
             </div>

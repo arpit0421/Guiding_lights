@@ -5,7 +5,11 @@ const answer = ()=>{
     const router = useRouter()
     const {questid} = router.query 
     return (
-        <><h1>This is a answers page for particular answer {questid}</h1> </>
+        <>
+        <div className="mt-20">
+            Hello {questid}
+        </div>
+        </>
     )
 }
 

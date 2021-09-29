@@ -7,9 +7,8 @@ export default async(req, res)=>{
     try {
         const {questid} = req.query
         const ques = await question.findOne({_id: questid})
-        const ans = ques.answer
-        console.log(ans);
-        res.status(200).json(ans)
+        console.log(ques);
+        res.status(200).json(ques)
         
     } catch (error) {
         console.log(error)

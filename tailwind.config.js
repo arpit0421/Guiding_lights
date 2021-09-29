@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
   purge: ["./components/NavBar.js",
-"./pages/*.js"],
+"./pages/*.js","./pages/answer/*.js"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
