@@ -1,13 +1,14 @@
 import { useRouter } from "next/router"
 
-
-const answer = ()=>{
+import DiscussionsCard from "../../components/DiscussionsCard"
+const answer = ({question})=>{
     const router = useRouter()
     const {questid} = router.query 
     return (
         <>
         <div className="mt-20">
-            Hello {questid}
+            <DiscussionsCard key={question._id} quest={question.quest} postedByName = {question.postedByName}
+                    ans={question.answer} likes = {question.likes} _id={question._id} onDiscussions={false}/>
         </div>
         </>
     )
@@ -25,11 +26,10 @@ export async function getStaticProps({params})
     })
 
     const data = await res.json()
-    console.log(data)
 
     return{
         props:{
-            answer:data
+            question:data
         }
     }
 

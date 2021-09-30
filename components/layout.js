@@ -5,7 +5,7 @@ import Footer from './Footer'
 
 const Layout = ({children})=>{
     return(
-        <>
+        <div className=" min-h-screen">
             <Head></Head>
             <div className="container">
                 <NavBar/>
@@ -15,7 +15,7 @@ const Layout = ({children})=>{
                 {children}
             </div>
             <Footer/>
-        </>   
+        </div>   
     )
 }
 

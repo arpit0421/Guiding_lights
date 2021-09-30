@@ -7,7 +7,7 @@ export default async(req, res)=>{
     switch(req.method)
     {
         case "GET":
-            getAnswer(reeq, res)
+            getAnswer(req, res)
             break
         case "PUT":
             postAnswer(req, res)
