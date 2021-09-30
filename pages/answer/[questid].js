@@ -1,20 +1,50 @@
-import { useRouter } from "next/router"
-
+import AnswerCard from "../../components/AnswerCard"
 import DiscussionsCard from "../../components/DiscussionsCard"
-const answer = ({question})=>{
-    const router = useRouter()
-    const {questid} = router.query 
-    return (
-        <>
-        <div className="mt-20">
-            <DiscussionsCard key={question._id} quest={question.quest} postedByName = {question.postedByName}
-                    ans={question.answer} likes = {question.likes} _id={question._id} onDiscussions={false}/>
-        </div>
-        </>
-    )
+import React, { Component } from 'react'
+
+export class answer extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             
+        }
+    }
+    componentDidMount(){
+        if(document.getElementById("__next").offsetHeight>window.innerHeight){
+            document.getElementById("footer").classList.remove("footerbottom")
+        }
+    }
+    componentWillUnmount(){
+        if(document.getElementById("__next").offsetHeight>window.innerHeight){
+            document.getElementById("footer").classList.add("footerbottom")
+        }
+    }
+    
+    render() {
+        return (
+            <>
+            <div className="answerpage">
+                <DiscussionsCard key={this.props.question._id} quest={this.props.question.quest} postedByName = {this.props.question.postedByName}
+                        ans={this.props.question.answer} likes = {this.props.question.likes} _id={this.props.question._id} onDiscussions={false}/>
+                <form>
+    
+                </form>
+                {this.props.question.answer.map((answer)=>{
+                    return(
+                        <AnswerCard key={answer._id} question={this.props.question._id} name={answer.name} answer={answer.answer} />
+                    )
+                })}
+            </div>
+            </>
+        )
+    }
 }
 
 export default answer
+
+
+
 
 export async function getStaticProps({params})
 {

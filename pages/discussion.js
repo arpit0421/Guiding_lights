@@ -1,33 +1,50 @@
-// fetch & display all the quesions with their author and date, likes, answers etc
-//
-import { useRouter } from 'next/router'
 import { parseCookies } from 'nookies'
-import Link from 'next/link'
-import cookie from 'cookie'
 import DiscussionsCard from '../components/DiscussionsCard'
 // import question from '../models/question'
 
-const discussion = ({questions})=>{
+import React, { Component } from 'react'
 
-    return(
-        <>
-        <h1 className="discussions">Discussions</h1>
-        <div className="flex flex-col justify-center mt-[12rem]">
-            {questions.map((question)=>{
-                
-                return(
-                    <DiscussionsCard key={question._id} quest={question.quest} postedByName = {question.postedByName}
-                    ans={question.answer} likes = {question.likes} _id={question._id}
-                    />
+export class discussion extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             
+        }
+    }
+    componentDidMount(){
+        if(document.getElementById("__next").offsetHeight>window.innerHeight){
+            document.getElementById("footer").classList.remove("footerbottom")
+        }
+    }
+    componentWillUnmount(){
+        if(document.getElementById("__next").offsetHeight>window.innerHeight){
+            document.getElementById("footer").classList.add("footerbottom")
+        }
+    }
+    
+    render() {
+        return(
+            <>
+            <h1 className="discussions">Discussions</h1>
+            <div className="flex flex-col justify-center mt-[12rem]">
+                {this.props.questions.map((question)=>{
                     
-                    
-                    )
-                })}
-        </div>
-
-        </> 
-    )
+                    return(
+                        <DiscussionsCard key={question._id} quest={question.quest} postedByName = {question.postedByName}
+                        ans={question.answer} likes = {question.likes} _id={question._id} onDiscussions={true}
+                        />
+                        
+                        
+                        )
+                    })}
+            </div>
+    
+            </> 
+        )
+    }
 }
+
 
 export default discussion
 

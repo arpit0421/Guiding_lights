@@ -11,7 +11,7 @@ const NavBar = ()=>{
     const cookieUser = parseCookies()
     const User = cookieUser.user ? JSON.parse(cookieUser.user) : ""
     const router = useRouter()
-
+    console.log(User);
     let userLoggenIn = false
     if(cookieUser.token){
         userLoggenIn = true
@@ -37,7 +37,7 @@ const NavBar = ()=>{
                     { userLoggenIn ? 
                         <>
                             <li className="mx-4">
-                                <Link href="profile/[profileid]" as={`profile/${User._id}`}><a>profile</a></Link> {/* /profile/:profileid*/}
+                                <Link  href={`profile/${User._id}`}><a>profile</a></Link> {/* /profile/:profileid*/}
                             </li>
                             <li className="mx-4">
                                 <button onClick={(e)=>userLogout(e)}>logout</button>
