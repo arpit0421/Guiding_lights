@@ -30,11 +30,12 @@ const getAnswer = async(req, res)=>{
 const postAnswer = async(req, res)=>{
     try {
         const data = JSON.parse(req.body)
-        const ques = await question.findOne({_id: questid})
+        const ques = await question.findOne({_id: data.quest_id})
         const ans = {name: data.name, answer: data.answer}
-        ques.answer.append(ans)
+        ques.answer.push(ans)
         ques.save()
-        console.log(ques)
+        res.status(201).json({message:"done"})
+        
 
     } catch (error) {
         console.log(error)

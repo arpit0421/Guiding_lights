@@ -13,7 +13,7 @@ export class AnswerCard extends Component {
         return (
             <div className="answercard">
                 <h1>{this.props.name}</h1>
-                <p>{this.props.answer}</p>
+                <p className=" break-words">{this.props.answer}</p>
             </div>
         )
     }
