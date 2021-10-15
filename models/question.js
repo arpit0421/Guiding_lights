@@ -21,10 +21,7 @@ const questionSchema = new mongoose.Schema({
             name: String 
         }
     ],
-    likes:{
-        type: Number,
-        default: 0
-    }
+    likes:[]
 }, {timestamps:true
 })
 
