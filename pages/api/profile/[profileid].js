@@ -1,18 +1,17 @@
-import dbConnect from "../../../helpers/dbconnect"
 import user from "../../../models/user"
 
-dbConnect();
-
-export default async( req, res)=>{
-    try {
-        const {profileid} = req.query
-        const userData = await user.findOne({_id: profileid})
-        
-        console.log(userData)
-        res.statu(200).json(userData)
-    }
-    catch (error) 
+export default async(req, res)=>{
+    if(req.method == "GET")
     {
-        console.log(error)
+        try {
+            const {profileid} = req.query
+            const _user = await user.findOne({_id: profileid})
+            console.log(_user)
+            res.status(200).json(_user)
+
+        } 
+        catch (error) {
+            console.log(error)
+        }
     }
 }

@@ -1,46 +1,61 @@
+import React, { Component } from 'react'
 
-import { useRouter } from 'next/router'
+export class profile extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             
+        }
+    }
+    
+    render() {
+        return (
+            <div>
+                This is an individual profile page {this.props.profile.name} {this.props.profile.department} {this.props.profile.email}
 
-const profile = (props)=>{
-
-    return(
-        <div>
-            <h1>this is user profile page</h1>
-        </div>
-    )
+            </div>
+        )
+    }
 }
 
 export default profile
 
-export async function getStaticProps()
+export async function getStaticProps({params})
 {
-    const router = useRouter()
-    const {profileid} = router.query
-    
-    console.log(profileid)
-    const res = await fetch(`http://localhost:3000/api/profile/${profileid}`, {
-        method : "GET",
-        headers : {
-            "Content-Type" : "application/json"
+    const res = await fetch(`http://localhost:3000/api/profile/${params.profileid}`, {
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json"
         }
     })
 
     const data = await res.json()
-    console.log(data)
 
     return{
         props:{
-            user: data
+            profile:data
         }
     }
+
 }
 
-export async function getStaticPaths(){
-
-    const paths = ["613cfc49cc265d4d5e51ae6f", "613f6e880cfffff928c59169", "613f6b1f0cfffff928c59162"]
-
-    
-
+export async function getStaticPaths()
+{
+    const res = await fetch('http://localhost:3000/api/findAllUsers',{
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    const data = await res.json()
+    // console.log(data)
+    const paths = data.map(profile=>{
+        return{
+            params:{profileid: profile._id.toString()}
+        }
+    })
+    console.log(paths)
     return{
         paths,
         fallback: false
