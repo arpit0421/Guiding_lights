@@ -11,9 +11,16 @@ export class profile extends Component {
     
     render() {
         return (
-            <div>
-                This is an individual profile page {this.props.profile.name} {this.props.profile.department} {this.props.profile.email}
-
+            <div className="mt-20">
+                <div className="profiletitle">
+                    PROFILE
+                </div>
+                <div className="flex flex-col my-7 profiledetails">
+                    <span>Name : {this.props.profile.name}</span>
+                    <span>Department : {this.props.profile.department}</span>
+                    <span>Email : {this.props.profile.email}</span>
+                </div>
+                
             </div>
         )
     }

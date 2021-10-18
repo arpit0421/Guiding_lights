@@ -13,6 +13,11 @@ export class NavBar extends Component {
         this.state = {
              
         }
+        this.userLogout = this.userLogout.bind(this)
+    }
+    userLogout(){
+        cookies.remove("token")
+        window.location.href = "/login"
     }
     componentDidMount(){
     const token = cookies.get("token")
@@ -24,7 +29,7 @@ export class NavBar extends Component {
         })
     }
     else{
-        this.setState({userLoggenIn:false})
+        this.setState({userLoggedIn:false})
     }
     
     }
@@ -43,7 +48,7 @@ export class NavBar extends Component {
                                     <Link  href={`profile/${this.state._id}`}><a>profile</a></Link> {/* /profile/:profileid*/}
                                 </li>
                                 <li className="mx-4">
-                                    <button onClick={(e)=>userLogout(e)}>logout</button>
+                                    <button onClick={(e)=>this.userLogout(e)}>logout</button>
                                 </li>
                             </> 
                             
