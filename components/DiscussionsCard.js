@@ -15,7 +15,13 @@ export class DiscussionsCard extends Component {
     componentDidMount(){
         const token = cookies.get("token")
         const decoded = jwt.decode(token)
-        this.setState({_id:decoded.userNow.userId})
+        if(decoded){
+
+            this.setState({_id:decoded.userNow.userId})
+        }
+        else{
+            window.location.href = "/login"
+        }
     }
     async toggleLike(){
         const res = await fetch('http://localhost:3000/api/toggleLike', {
@@ -36,7 +42,7 @@ export class DiscussionsCard extends Component {
         return (
             <div className="discussioncard">
                 <img src="/profilepic.jpg"></img>
-                <h1>{this.props.postedByName}</h1>
+                <Link href={"/profile/"+this.props.postedById}><a><h1>{this.props.postedByName}</h1></a></Link>
                 <p>{this.props.quest}</p>
                 {[1].map((element)=>{if(this.props.onDiscussions){return(<div key={element}>
                 <span className="likes">

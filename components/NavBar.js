@@ -18,6 +18,7 @@ export class NavBar extends Component {
     userLogout(){
         cookies.remove("token")
         window.location.href = "/login"
+        window.location.reload()
     }
     componentDidMount(){
     const token = cookies.get("token")

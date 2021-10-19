@@ -31,7 +31,7 @@ export class discussion extends Component {
                 {this.props.questions.map((question)=>{
                     
                     return(
-                        <DiscussionsCard key={question._id} quest={question.quest} postedByName = {question.postedByName}
+                        <DiscussionsCard key={question._id} quest={question.quest} postedByName = {question.postedByName} postedById = {question.postedById}
                         ans={question.answer} likes = {question.likes} _id={question._id} onDiscussions={true}
                         />
                         
